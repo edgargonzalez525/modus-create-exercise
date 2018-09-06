@@ -1,0 +1,43 @@
+<div class="container">
+  <button mat-raised-button
+          color="primary"
+          routerLink="..">
+    Back
+  </button>
+
+  <ng-container *ngIf="!loadingUser; else loading">
+    <ng-container *ngIf="user; else noUserFound">
+      <div class="user mat-elevation-z8">
+        <div class="user__header">
+          <img class="user__header__img"
+               [src]="user.picture"/>
+        </div>
+
+        <div class="user__body">
+          <h2 class="user__body__name">{{user.firstName}} {{user.lastName}}</h2>
+          <div class="user__body__mail"
+               matTooltip="Email"
+               matTooltipPosition="above">
+            {{user.email}}
+          </div>
+          <div class="user__body__phone"
+               matTooltip="Phone"
+               matTooltipPosition="above">
+            {{user.phone}}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #noUserFound>
+      <div class="user-error">
+        {{userError}}
+      </div>
+    </ng-template>
+  </ng-container>
+
+  <ng-template #loading>
+    <ng-e-loading-spinner></ng-e-loading-spinner>
+  </ng-template>
+
+</div>

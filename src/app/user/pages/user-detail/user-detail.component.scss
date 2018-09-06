@@ -1,0 +1,51 @@
+$imgSize: 130px;
+
+.container {
+  width: 600px;
+  margin: 0 auto;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.user {
+  margin-top: 20px;
+
+  &__header {
+    background: #f3f3f3;
+    text-align: center;
+
+    &__img {
+      width: $imgSize;
+      height: $imgSize;
+      transform: translate(0, 50%);
+      border-radius: $imgSize/2;
+      border: solid 1px #ccc;
+    }
+  }
+
+  &__body {
+    padding: 60px 20px 20px 20px;
+    text-align: center;
+
+    &__name {
+      text-transform: capitalize;
+    }
+
+    &__mail,
+    &__phone {
+      color: #888;
+    }
+
+    &__mail {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.user-error {
+  margin-top: 20px;
+  padding: 20px;
+  color: #fff;
+  background: #ff4641;
+  text-align: center;
+}

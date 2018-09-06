@@ -1,19 +1,31 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AppHeaderComponent } from './components/app-header/app-header.component';
-import { AppContentComponent } from './components/app-content/app-content.component';
-import { RouterModule } from '@angular/router';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { AppService } from './services/app.service';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthService } from './services/auth.service';
 
+/**
+ * The Core module is used to hold all root-level providers. It should only be imported in the AppModule.
+ */
 @NgModule({
   imports: [
-    CommonModule,
-    RouterModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
   ],
-  declarations: [AppHeaderComponent, AppContentComponent],
-  exports: [AppHeaderComponent, AppContentComponent],
+  declarations: [],
+  exports: [],
+  /** Place all services/providers/injection tokens here here */
   providers: [
-    AppService
+    AppService,
+    AuthService,
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+    if (parentModule) {
+      throw new Error('CoreModule is already loaded. Import it in the AppModule only');
+    }
+  }
+}

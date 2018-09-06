@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LandingComponent } from './landing/landing.component';
 
@@ -10,6 +10,9 @@ const routes: Routes = [{
   path: 'home',
   component: HomeComponent
 }, {
+  path: 'user',
+  loadChildren: 'app/user/user.module#UserModule'
+}, {
   path: '**',
   redirectTo: 'landing'
 }];
@@ -18,4 +21,4 @@ const routes: Routes = [{
   imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
